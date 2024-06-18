@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .  # Build the image from the current directory (./) where Dockerfile resides
+    volumes:
+      - ./:/app  # Mount your local application code directory (/app) to the container's /app directory
+    ports:
+      - "8080:5000"  # Map container port 8080 to host port 5000
+    environment:
+      - INFLUXDB_HOST=influxdb  # Define InfluxDB service name as seen by other services
+      - INFLUXDB_PORT=8086  # Define default InfluxDB port (can be adjusted)
+    depends_on:
+      - influxdb  # Ensure InfluxDB starts before the Flask app
+
+  influxdb:
+    image: influxdb:latest  # Use the official InfluxDB image (adjust version if needed)
+    ports:
+      - "8086:8086"  # Map container port 8086 to host port 8086
+    volumes:
+      - influxdb_data:/var/lib/influxdb  # Persist InfluxDB data
+
+volumes:
+  influxdb_data:  # Define a named volume to persist InfluxDB data
