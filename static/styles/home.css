@@ -1,0 +1,15 @@
+.home {
+  margin: 0 auto;
+  text-align: center;
+  a {
+    text-decoration: none;
+  }
+}
+
+div img {
+  overflow: hidden;
+  width: 5%;
+  height: 5%;
+  border-radius: 50%;
+  object-fit: cover;
+}
