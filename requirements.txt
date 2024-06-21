@@ -6,3 +6,5 @@ flask-cors==4.0.1
 pyusb==1.2.1
 flask-testing==0.8.1
 gunicorn==22.0.0
+python-dotenv==1.0.1
+board==1.0
